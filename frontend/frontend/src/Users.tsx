@@ -3,12 +3,11 @@ import { getUsers, createUser, updateUser, deleteUser } from "./api";
 import type { User } from "./types";
 
 const Users: React.FC = () => {
-
   const [users, setUsers] = useState<User[]>([]);
   const [form, setForm] = useState<User>({
     name: "",
     email: "",
-    age: 0
+    age: ""
   });
 
   useEffect(() => {
@@ -43,48 +42,55 @@ const Users: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Users</h2>
+    <div className="users-container">
+      {/* Form Card */}
+      <div className="form-card">
+          <h2>Users Management System</h2>
+        <form onSubmit={handleSubmit} className="form-grid">
+          <input
+            className="custom-input"
+            placeholder="Name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
+          <input
+            className="custom-input"
+            placeholder="Email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            required
+          />
+          <input
+            className="custom-input"
+            type="number"
+            placeholder="Age"
+            value={form.age}
+            onChange={(e) => setForm({ ...form, age: Number(e.target.value) })}
+            required
+          />
+          <button type="submit" className="submit-btn">
+            {form.id ? "Update" : "Create"}
+          </button>
+        </form>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="custom-input"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
-
-        <input
-          className="custom-input"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
-
-        <input
-          className="custom-input"
-          type="number"
-          placeholder="Age"
-          value={form.age}
-          onChange={(e) => setForm({ ...form, age: Number(e.target.value) })}
-        />
-
-        <button type="submit" className="sbmit-bttn">
-          {form.id ? "Update" : "Create"}
-        </button>
-      </form>
-
-      <ul>
+      {/* Users List */}
+      <div className="users-list">
         {users.map((user) => (
-          <li key={user.id}>
-            <span className="user_info">
-              {user.name} - {user.email} - {user.age}
-            </span>
-            <button className="row-bttns" onClick={() => handleEdit(user)}>Edit</button>
-            <button className="row-bttns" onClick={() => handleDelete(user.id!)}>Delete</button>
-          </li>
+          <div className="user-card" key={user.id}>
+            <div className="user-info">
+              <strong>{user.name}</strong>
+              <span>{user.email}</span>
+              <span>Age: {user.age}</span>
+            </div>
+            <div className="user-actions">
+              <button className="action-btn edit-btn" onClick={() => handleEdit(user)}>Edit</button>
+              <button className="action-btn delete-btn" onClick={() => handleDelete(user.id!)}>Delete</button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
