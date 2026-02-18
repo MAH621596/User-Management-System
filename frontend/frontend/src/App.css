@@ -1,53 +1,153 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Body & Background */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh; /* full height */
+  background: url('https://www.mastercontrol.com/images/default-source/gxp-lifeline/20222/august/2022-bl-data-integrity-standards_900x400.png?Status=Temp&sfvrsn=adfe7dcc_2') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px; /* prevents overflow on small screens */
+  box-sizing: border-box;
 }
 
+/* Container */
+.users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.users-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Form Card */
+.form-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: center;
+}
+
+/* Inputs */
 .custom-input {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
+  padding: 12px 15px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .custom-input:focus {
   border-color: #4CAF50;
   outline: none;
-  /* removes default focus outline */
 }
 
-.sbmit-bttn {
+/* Submit Button */
+.submit-btn {
+  grid-column: span 1;
   background-color: #0a0a23;
   color: #fff;
   border: none;
   border-radius: 10px;
-  padding: 15px;
-  min-height: 30px;
-  min-width: 120px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.submit-btn:hover {
+  background-color: #333;
 }
 
-.user_info {
-  margin-right: 20px;
+/* Users List */
+.users-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-.row-bttns {
+/* User Card */
+.user-card {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.user-card:hover {
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.user-info span {
+  color: #555;
+}
+
+/* Action Buttons */
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-btn {
   background-color: #7070cf;
   color: #fff;
-  border: none;
-  border-radius: 10px;
-  height: 40px;
-  width: 100px;
-  margin: 10px 0 0 20px;
+}
+
+.edit-btn:hover {
+  background-color: #5050b0;
+}
+
+.delete-btn {
+  background-color: #ff4e00;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #e04300;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .user-card {
+    padding: 15px;
+  }
 }
